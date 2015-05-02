@@ -13,6 +13,3 @@ bundle install
 if [ ! -d .git/safe ]; then
   mkdir .git/safe
 fi
-
-# Set up the database
-bundle exec rake db:migrate

@@ -26,8 +26,11 @@ git checkout -b my-feature-branch
 #### Bundle Install and Test
 
 Ensure that you can build the project and run tests, within the correct application directory.
+Each directory has a bin/setup shell script that will setup up the project on your machine.
 
 ```
+cd [site / umbrella]
+bin/setup
 bundle install
 bundle exec rake
 ```
