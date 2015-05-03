@@ -44,4 +44,17 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
     end
   end
+  
+  describe 'POST #reset_password' do
+    before do
+      @user = FactoryGirl.create(:user)
+    end
+    
+    context "with valid attributes" do
+      it "creates a new , making sure response is #201" do
+        post :reset_password, id: @user, user: FactoryGirl.attributes_for(:user), format: :json
+        @response.status.should eq(201)
+      end
+    end
+  end
 end

@@ -1,23 +1,28 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :set_user, only: :update
+      before_action :set_user, except: :create
       
       def create
         @user = User.new(user_params)
         if @user.save(user_params)
-           render :json => @user, status: :created
+           render json: @user, status: :created
         else
-          render :json => {}, status: :unprocessable_entity
+          render json: {}, status: :unprocessable_entity
         end
       end
       
       def update
         if @user.update(user_params)
-           render :json => @user, status: :ok
+           render json: @user, status: :ok
         else
-          render :json => {}, status: :unprocessable_entity
+          render json: {}, status: :unprocessable_entity
         end
+      end
+      
+      def reset_password
+         @user.send_password_reset
+         render json: {}, status: :created
       end
       
       private
