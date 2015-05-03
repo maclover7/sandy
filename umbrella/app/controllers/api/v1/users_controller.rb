@@ -27,7 +27,7 @@ module Api
       
         def user_params
           params.require(:user).permit(
-            :email, :first_name, :last_name, :address_1, :address_2,
+            :email, :password, :first_name, :last_name, :address_1, :address_2,
             :address_city, :address_state, :address_zipcode, :phone_number            
             )
         end
