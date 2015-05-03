@@ -20,4 +20,28 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
     end
   end
+
+  describe 'PUT #update' do
+    before do
+      @user = FactoryGirl.create(:user)
+    end
+    
+    context "with valid attributes" do
+      it "updates a user" do
+        put :update, id: @user, user: FactoryGirl.attributes_for(:user, email: "test1@example.com"), format: :json
+        @user.reload
+        @user.email.should eq("test1@example.com")
+      end
+      it "updates a user, making sure response is #200" do
+        put :update, id: @user, user: FactoryGirl.attributes_for(:user, email: "test1@example.com"), format: :json
+        @response.status.should eq(200)
+      end
+    end
+    context "with invalid attributes" do
+      it "returns 422" do
+        put :update, id: @user, user: FactoryGirl.attributes_for(:user, email: nil), format: :json
+        @response.status.should eq(422)
+      end
+    end
+  end
 end
