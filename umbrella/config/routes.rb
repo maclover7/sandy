@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
   # API
-  
-    # USERS
-      devise_for :users, path: "api/v1/users", controllers: {
-        registrations: "api/v1/users"
-      }
 
     #namespace :api, path: "", :constraints => {:subdomain => "api"}, defaults: {format: 'json'} do
     namespace :api, defaults: {format: 'json'} do
