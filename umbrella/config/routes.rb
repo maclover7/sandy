@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         resources :users do
           member do
             post :reset_password
+            put :update_password
           end
         end
       end

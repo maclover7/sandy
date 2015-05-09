@@ -57,4 +57,17 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
     end
   end
+  
+  describe 'PUT #update_password' do
+    before do
+      @user = FactoryGirl.create(:user)
+      @user.password_reset_token = "abc"
+      @user.password_reset_sent_at = 1.minute.ago
+    end
+    
+    context "with valid attributes" do
+      it "creates a new , making sure response is #200" do
+      end
+    end
+  end
 end
